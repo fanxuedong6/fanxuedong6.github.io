@@ -635,54 +635,53 @@
 <li><p><strong>统一列表初始化</strong></p>
 <p>  { } 初始化对于等于号的是否书写没有影响<code>int arr = new int[3]{ 1, 2, 3 };</code> 堆上动态分配的数组可以使用初始化列表</p>
 </li>
-<li><strong>初始化列表</strong></li>
+<li><p><strong>初始化列表</strong></p>
+<ul>
+<li>当类型为聚合类型时才适用无初始化列表构造函数的初始化</li>
+<li><p>利用<code>std::initializer_list</code>类模板完成初始化列表构造函数</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">FooVector</span>
+<span class="token punctuation">{</span>
+  std<span class="token operator">::</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> content<span class="token punctuation">;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+  <span class="token function">FooVector</span><span class="token punctuation">(</span>std<span class="token operator">::</span>initializer_list<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> list<span class="token punctuation">)</span>
+  <span class="token punctuation">{</span>
+      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">auto</span> it <span class="token operator">=</span> list<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> it <span class="token operator">!=</span> list<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>it<span class="token punctuation">)</span>
+          content<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span><span class="token operator">*</span>it<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">FooMap</span>
+<span class="token punctuation">{</span>
+  std<span class="token operator">::</span>map<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">></span> content<span class="token punctuation">;</span>
+  <span class="token keyword">using</span> pair_t <span class="token operator">=</span> std<span class="token operator">::</span>map<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">></span><span class="token operator">::</span>value_type<span class="token punctuation">;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+  <span class="token function">FooMap</span><span class="token punctuation">(</span>std<span class="token operator">::</span>initializer_list<span class="token operator">&lt;</span>pair_t<span class="token operator">></span> list<span class="token punctuation">)</span>
+  <span class="token punctuation">{</span>
+      <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">auto</span> it <span class="token operator">=</span> list<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> it <span class="token operator">!=</span> list<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>it<span class="token punctuation">)</span>
+          content<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token operator">*</span>it<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+FooVector foo_1 <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+FooMap foo_2 <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token punctuation">{</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>还可以用来传递同类型的数据集合</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">func</span><span class="token punctuation">(</span>std<span class="token operator">::</span>initializer_list<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> l<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">auto</span> it <span class="token operator">=</span> list<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> it <span class="token operator">!=</span> list<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>it<span class="token punctuation">)</span>
+      std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token operator">*</span>it <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>ends<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><code>std::initializer_list</code> 保存对象的引用</li>
+<li>可以防止类型收窄<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">1.1</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//ok but a = 1</span>
+<span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token number">1.1</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//error</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="范围for循环"><a href="#范围for循环" class="headerlink" title="范围for循环"></a><strong>范围for循环</strong></h3></li>
 </ul>
-<pre><code>+ 当类型为聚合类型时才适用无初始化列表构造函数的初始化
-+ 利用`std::initializer_list`类模板完成初始化列表构造函数
-```cpp    
-class FooVector
-{
-    std::vector&lt;int&gt; content;
-public:
-    FooVector(std::initializer_list&lt;int&gt; list)
-    {
-        for (auto it = list.begin(); it != list.end(); ++it)
-            content.push_back(*it);
-    }
-};
-
-class FooMap
-{
-    std::map&lt;int, int&gt; content;
-    using pair_t = std::map&lt;int, int&gt;::value_type;
-public:
-    FooMap(std::initializer_list&lt;pair_t&gt; list)
-    {
-        for (auto it = list.begin(); it != list.end(); ++it)
-            content.insert(*it);
-    }
-};
-
-FooVector foo_1 = { 1, 2, 3, 4, 5 };
-FooMap foo_2 = { { 1, 2}, { 3, 4 }, { 5, 6 } };
-```
-还可以用来传递同类型的数据集合
-```cpp
-void func(std::initializer_list&lt;int&gt; l)
-{
-    for (auto it = list.begin(); it != list.end(); ++it)
-        std::cout &lt;&lt; *it &lt;&lt; std::ends;
-}
-func({});
-func({ 1, 2, 3 });
-```
-+ `std::initializer_list` 保存对象的引用
-+ 可以防止类型收窄
-```cpp
-int a = 1.1;    //ok but a = 1
-int a = { 1.1 };    //error
-```
-</code></pre><h3 id="范围for循环"><a href="#范围for循环" class="headerlink" title="范围for循环"></a><strong>范围for循环</strong></h3><ul>
+</li>
 <li><p><strong>支持自定义类型</strong></p>
 <p>  需要容器提供begin和end迭代器</p>
 </li>

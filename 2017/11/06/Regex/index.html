@@ -12,6 +12,8 @@
     
     <title>
         
+            Regex | 
+        
         风轻云淡
     </title>
 
@@ -38,7 +40,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="Fan Xuedong">
     <meta name="description" itemprop="description" content="来杯咖啡？">
-    <meta name="keywords" content="">
+    <meta name="keywords" content=",正则表达式">
 
     <!-- Site Verification -->
     
@@ -67,15 +69,18 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://fanxuedong6.top">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="风轻云淡">
+    <meta property="og:title" content="Regex | 风轻云淡">
     <meta property="og:image" content="/img/favicon.png" />
     <meta property="og:description" content="来杯咖啡？">
-    
+    <meta property="og:article:tag" content="正则表达式"> 
 
+    
+        <meta property="article:published_time" content="11月 06, 2017" />
+        <meta property="article:modified_time" content="11月 06, 2017" />
     
 
     <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="风轻云淡">
+    <meta name="twitter:title" content="Regex | 风轻云淡">
     <meta name="twitter:description" content="来杯咖啡？">
     <meta name="twitter:image" content="/img/favicon.png">
     <meta name="twitter:card" content="summary_large_image" />
@@ -83,35 +88,43 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://fanxuedong6.top" />
+        <link rel="canonical" href="http://fanxuedong6.top/2017/11/06/Regex/index.html" />
     
 
     <!-- Structured-data for SEO -->
     
         
+
+
 <script type="application/ld+json">
 {
-    "@context": "http://schema.org",
-    "@type": "Website",
+    "@context": "https://schema.org",
+    "@type": "Article",
     "publisher": {
         "@type": "Organization",
         "name": "风轻云淡",
         "logo": "/img/favicon.png"
     },
-    "url": "http://fanxuedong6.top/index.html",
-    "image": {
-        "@type": "ImageObject",
-        "url": "/img/favicon.png"
+    "author": {
+        "@type": "Person",
+        "name": "Fan Xuedong",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/favicon.png"
+        },
+        "description": "悟已往之不谏,知来者之可追,实迷途其未远,觉今是而昨非"
     },
+    "headline": "Regex",
+    "url": "http://fanxuedong6.top/2017/11/06/Regex/index.html",
+    "datePublished": "11月 06, 2017",
+    "dateModified": "11月 06, 2017",
+    "description": "来杯咖啡？",
     "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "http://fanxuedong6.top"
-    },
-    "description": "来杯咖啡？"
+    }
 }
 </script>
-
-
 
 
     
@@ -314,664 +327,425 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
+                    <!-- Post TOC -->
+
     
-        <!-- Paradox Header -->
-        <!-- Daily pic -->
-<div class="mdl-card mdl-shadow--2dp daily-pic mdl-cell mdl-cell--8-col index-top-block">
-
-    <!-- Pic & Slogan -->
-    <div class="mdl-card__media mdl-color-text--grey-50" style="background-image:url(/img/daily_pic.png)">
-        <p class="index-top-block-slogan"><a href="#">
-        
-            
-                悟已往之不谏<br>知来者之可追<br>实迷途其未远<br>觉今是而昨非
-            
-        
-        </a></p>
-    </div>
-
-    <!-- Avatar & Name -->
-    <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
-        <!-- Author Avatar -->
-        <div id="author-avatar">
-            <img src="/img/avatar.png" width="32px" height="32px" alt="avatar">
-        </div>
-        <div>
-            <strong>Fan Xuedong</strong>
-        </div>
-    </div>
-</div>
-
-        <!-- Blog info -->
-<div class="mdl-card mdl-shadow--2dp something-else mdl-cell mdl-cell--8-col mdl-cell--4-col-desktop index-top-block">
-
-    <!-- Search -->
-    
-    <!-- Google -->
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable" method="post" action="">
-        <label id="search-label" class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--fab mdl-color--accent mdl-shadow--4dp" for="search">
-            <i class="material-icons mdl-color-text--white" role="presentation">search</i>
-        </label>
-
-        <form autocomplete="off" id="search-form" method="get" action="//google.com/search" accept-charset="UTF-8" class="mdl-textfield__expandable-holder" target="_blank">
-            <input class="mdl-textfield__input search-input" type="search" name="q" id="search" placeholder="">
-            <label id="search-form-label" class="mdl-textfield__label" for="search"></label>
-
-            <input type="hidden" name="sitesearch" value="http://fanxuedong6.top">
-        </form>
-    </div>
-
-
-
-
-
-
-
-    <!-- LOGO -->
-    <div class="something-else-logo mdl-color--white mdl-color-text--grey-600">
-        <a href="#" target="_blank">
-            <img src="/img/logo.png" alt="logo" />
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
         </a>
     </div>
+    -->
 
-    <!-- Infomation -->
-    <div class="mdl-card__supporting-text meta meta--fill mdl-color-text--grey-600">
-        <!-- Blog Title -->
-        <div>
-            <strong>风轻云淡</strong>
-        </div>
-        <div class="section-spacer"></div>
-
-        <!-- Pages -->
-        <button id="show-pages-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-            <i class="material-icons" role="presentation">view_carousel</i>
-            <span class="visuallyhidden">Pages</span>
-        </button>
-        <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="show-pages-button">
-            
-                <a class="index_share-link" href="/tags" title="标签云">
-                    <li class="mdl-menu__item mdl-js-ripple-effect">
-                        标签云
-                    </li>
-                </a>
-            
-                <a class="index_share-link" href="/timeline" title="时间轴">
-                    <li class="mdl-menu__item mdl-js-ripple-effect">
-                        时间轴
-                    </li>
-                </a>
-            
-        </ul>
-
-        <!-- Menu -->
-        <button id="menubtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-            <i class="material-icons" role="presentation">more_vert</i>
-            <span class="visuallyhidden">show menu</span>
-        </button>
-        <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="menubtn">
-            
-                <!-- All Site UV -->
-                <a class="index_share-link" href="#">
-                    <li class="mdl-menu__item mdl-js-ripple-effect">
-                        <span id="busuanzi_container_site_uv">
-                            <span id="busuanzi_value_site_uv"></span>&nbsp;浏览量
-                        </span>
-                    </li>
-                </a>
-            
-
-            
-
-            
-                <a class="index_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=风轻云淡&url=http://fanxuedong6.top/&pic=&searchPic=false&style=simple" target="_blank">
-                    <li class="mdl-menu__item mdl-js-ripple-effect">
-                        分享到微博
-                    </li>
-                </a>
-            
-
-            
-                <a class="index_share-link" href="https://twitter.com/intent/tweet?text=风轻云淡&url=http://fanxuedong6.top/&via=Fan Xuedong" target="_blank">
-                    <li class="mdl-menu__item mdl-js-ripple-effect">
-                        分享到 Twitter
-                    </li>
-                </a>
-            
-
-            
-                <a class="index_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://fanxuedong6.top/index.html" target="_blank">
-                    <li class="mdl-menu__item mdl-js-ripple-effect">
-                        分享到 Facebook
-                    </li>
-                </a>
-            
-
-            
-                <a class="index_share-link" href="https://plus.google.com/share?url=http://fanxuedong6.top/" target="_blank">
-                    <li class="mdl-menu__item mdl-js-ripple-effect">
-                        分享到 Google+
-                    </li>
-                </a>
-            
-
-            
-
-            
-                <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=风轻云淡&title=风轻云淡&summary=来杯咖啡？&pics=http://fanxuedong6.top/img/favicon.png&url=http://fanxuedong6.top/" target="_blank">
-                    <li class="mdl-menu__item">
-                        分享到 QQ
-                    </li>
-                </a>
-            
-
-            
-        </ul>
-    </div>
-</div>
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
 
     
-    <div class="locate-thumbnail-symbol"></div>
-
-    <!-- Pin on top -->
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#普通字符"><span class="post-toc-number">1.</span> <span class="post-toc-text">普通字符</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#元字符"><span class="post-toc-number">2.</span> <span class="post-toc-text">元字符</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#通配符（只能匹配一个）"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">通配符（只能匹配一个）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#量词："><span class="post-toc-number">2.2.</span> <span class="post-toc-text">量词：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#非贪婪量词（惰性量词）"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">非贪婪量词（惰性量词）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#锚定符（零宽界定符）"><span class="post-toc-number">3.</span> <span class="post-toc-text">锚定符（零宽界定符）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#转义字符："><span class="post-toc-number">4.</span> <span class="post-toc-text">转义字符：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#字符组："><span class="post-toc-number">5.</span> <span class="post-toc-text">字符组：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#逻辑符号："><span class="post-toc-number">6.</span> <span class="post-toc-text">逻辑符号：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#高级阶段"><span class="post-toc-number">7.</span> <span class="post-toc-text">高级阶段</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#前向界定符（预搜索）"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">前向界定符（预搜索）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#反向索引"><span class="post-toc-number">7.2.</span> <span class="post-toc-text">反向索引</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#固化分组（强制贪婪）"><span class="post-toc-number">7.3.</span> <span class="post-toc-text">固化分组（强制贪婪）</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#正则构造的步骤"><span class="post-toc-number"></span> <span class="post-toc-text">正则构造的步骤</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1）-以需求中出现的普通字符为锚点"><span class="post-toc-number">0.1.</span> <span class="post-toc-text">1） 以需求中出现的普通字符为锚点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2）-找到匹配字符串的边界"><span class="post-toc-number">0.2.</span> <span class="post-toc-text">2） 找到匹配字符串的边界</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3）-用量词填充中间部分"><span class="post-toc-number">0.3.</span> <span class="post-toc-text">3） 用量词填充中间部分</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4）-验证结果"><span class="post-toc-number">0.4.</span> <span class="post-toc-text">4） 验证结果</span></a></li></ol></li></ol>
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
     
 
-    <!-- Normal Post -->
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         
             <!-- Random Thumbnail -->
             <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/11/06/Regex/">Regex</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            普通字...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/11/06/Regex/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Fan Xuedong's avatar">
-            </div>
-            <div>
-                <strong>Fan Xuedong</strong>
-                <span>11月 06, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/正则表达式/">正则表达式</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/09/17/C++11-Review/">C++11-Review</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            C+...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/09/17/C++11-Review/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Fan Xuedong's avatar">
-            </div>
-            <div>
-                <strong>Fan Xuedong</strong>
-                <span>9月 17, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/C/">C++</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/08/02/C++11-列表初始化/">C++11-列表初始化</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            ...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/08/02/C++11-列表初始化/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Fan Xuedong's avatar">
-            </div>
-            <div>
-                <strong>Fan Xuedong</strong>
-                <span>8月 02, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/C/">C++</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/08/02/C++11-模板改进/">C++11-模板改进</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            模板改...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/08/02/C++11-模板改进/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Fan Xuedong's avatar">
-            </div>
-            <div>
-                <strong>Fan Xuedong</strong>
-                <span>8月 02, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/C/">C++</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/08/02/C++11-类型推导/">C++11-类型推导</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            类型推...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/08/02/C++11-类型推导/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Fan Xuedong's avatar">
-            </div>
-            <div>
-                <strong>Fan Xuedong</strong>
-                <span>8月 02, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/C/">C++</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/07/12/C++-面向对象/">C++-面向对象</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/07/12/C++-面向对象/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Fan Xuedong's avatar">
-            </div>
-            <div>
-                <strong>Fan Xuedong</strong>
-                <span>7月 12, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/C/">C++</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/07/05/C++-EffectiveC++/">C++-EffectiveC++</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/07/05/C++-EffectiveC++/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Fan Xuedong's avatar">
-            </div>
-            <div>
-                <strong>Fan Xuedong</strong>
-                <span>7月 05, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/C/">C++</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/06/22/Java-复习文档/">Java-复习文档</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            JAVA
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/06/22/Java-复习文档/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Fan Xuedong's avatar">
-            </div>
-            <div>
-                <strong>Fan Xuedong</strong>
-                <span>6月 22, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/Java/">Java</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-
-    
-
-    
-        <script type="text/ls-javascript" id="thumbnail-script">
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
     $('.post_thumbnail-random').addClass('lazy');
-
-        locatePost = locatePost.next();
-    }
 </script>
 
+        
+    
+            <p class="article-headline-p">
+                Regex
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Fan Xuedong</strong>
+        <span>11月 06, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="https://pan.baidu.com/share/qrcode?w=246&h=246&url=http://fanxuedong6.top/2017/11/06/Regex/">
+    
+</ul>
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/正则表达式/">正则表达式</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+        
+            <!-- Busuanzi Views -->
+            <a class="post_share-link" href="#">
+                <li class="mdl-menu__item">
+                    <span id="busuanzi_container_page_pv">
+                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
+                    </span>
+                </li>
+            </a>
+        
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Regex&url=http://fanxuedong6.top/2017/11/06/Regex/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Regex&url=http://fanxuedong6.top/2017/11/06/Regex/index.html&via=Fan Xuedong" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://fanxuedong6.top/2017/11/06/Regex/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://fanxuedong6.top/2017/11/06/Regex/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=风轻云淡&title=Regex&summary=来杯咖啡？&pics=http://fanxuedong6.top/img/favicon.png&url=http://fanxuedong6.top/2017/11/06/Regex/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h2 id="普通字符"><a href="#普通字符" class="headerlink" title="普通字符"></a><strong>普通字符</strong></h2><pre><code>boy    =&gt;    i am a boy
+</code></pre><h2 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a><strong>元字符</strong></h2><h3 id="通配符（只能匹配一个）"><a href="#通配符（只能匹配一个）" class="headerlink" title="通配符（只能匹配一个）"></a><strong>通配符（只能匹配一个）</strong></h3><ul>
+<li><strong>.    =&gt;    除了换行符\n之外的任意一个字符</strong></li>
+<li><strong>\d    =&gt;    任意一个数字 0~9中的任意一个</strong></li>
+<li><strong>\D    =&gt;    与\d相反</strong></li>
+<li><strong>\w    =&gt;    任意一个数字或字母或下划线，也就是A-Z,a-z,0-9,_中任意一个</strong></li>
+<li><strong>\W    =&gt;    与\w相反</strong></li>
+<li><strong>\s    =&gt;    包括空格、制表符、换页符等空白符号的任意一个</strong></li>
+<li><strong>\S    =&gt;    与\s相反</strong><h3 id="量词："><a href="#量词：" class="headerlink" title="量词："></a><strong>量词：</strong></h3></li>
+<li><strong>*    =&gt;    匹配0次或者任意次数</strong><ul>
+<li>eg:<pre><code>ca*t    =&gt;    ct, cat, caaat...
+</code></pre></li>
+</ul>
+</li>
+<li><em>注意：像\</em>这样的重复是贪婪的：当重复一个RE时, 匹配引擎会尝试尽可能多的次数。如果模式后面没有被匹配，匹配引擎会退回并再次尝试更小的重复。如文本串 “cxtyt” 想匹配 “cxt” 模式串为 “c.*t” 则模式匹配会匹配整个串! “\d*“ 匹配 “abc123” 会匹配四次! 因为 * 匹配0或任意次数!*                </li>
+<li><strong>+    =&gt;    匹配至少一次</strong><ul>
+<li>eg:<pre><code>ca+t    =&gt;    cat, caat, caaat...
+</code></pre></li>
+</ul>
+</li>
+<li><strong>？    =&gt;    匹配0次或者1次</strong><ul>
+<li>eg:<pre><code>colou?r    =&gt;    color, colour
+</code></pre></li>
+</ul>
+</li>
+<li><strong>{n,m}    =&gt;    至少是n次,至多是m次,n和m均可以省略</strong><ul>
+<li>eg:<pre><code>{,}    ==    *
+{1,}    ==    +
+{0,1}    ==    ?
+</code></pre><h3 id="非贪婪量词（惰性量词）"><a href="#非贪婪量词（惰性量词）" class="headerlink" title="非贪婪量词（惰性量词）"></a><strong>非贪婪量词（惰性量词）</strong></h3></li>
+</ul>
+</li>
+<li><strong>*? +?    ??    {n,m}?</strong></li>
+<li><strong>在可以匹配的情况下，尽可能的减少量词重复的次数。     在有回溯的情况下，可以极大地提高正则匹配的性能</strong><h2 id="锚定符（零宽界定符）"><a href="#锚定符（零宽界定符）" class="headerlink" title="锚定符（零宽界定符）"></a><strong>锚定符（零宽界定符）</strong></h2></li>
+<li><strong>^    =&gt;    匹配每行的开始位置 用”\^”匹配”^”本身</strong><ul>
+<li>eg：<pre><code>^NewContext    =&gt;    NewContext
+</code></pre></li>
+</ul>
+</li>
+<li><strong>$    =&gt;    匹配每行的开始位置 用”\$”匹配”$”本身</strong><ul>
+<li>eg:<pre><code>ContextEnd$    =&gt;    ContextEnd
+</code></pre></li>
+</ul>
+</li>
+<li><strong>\b    =&gt;    匹配一个单词边界</strong><ul>
+<li>eg：<pre><code>for i in range
+\br.*e    =&gt;    range
+</code></pre></li>
+</ul>
+</li>
+<li><strong>\A    =&gt;    匹配输入字符串的开始位置</strong></li>
+<li><strong>\z    =&gt;    匹配输入字符串的结尾位置</strong><ul>
+<li><em>注意：    字符串可以有换行符，对于一个文本 \A, \Z 就是匹配整篇开头与结尾 ^ $ 却是匹配每行开头与结尾</em></li>
+</ul>
+</li>
+<li><em>注意：    锚定符是”零宽”， 也就是不会”消耗”输入字符串中的任何字符</em></li>
+<li><strong>^$ 表示匹配空行</strong></li>
+</ul>
+<h2 id="转义字符："><a href="#转义字符：" class="headerlink" title="转义字符："></a><strong>转义字符：</strong></h2><ul>
+<li><strong>用”\”加字符表示搜索该字符</strong></li>
+</ul>
+<h2 id="字符组："><a href="#字符组：" class="headerlink" title="字符组："></a><strong>字符组：</strong></h2><ul>
+<li><strong>[]    =&gt;    指定一个字符类别。字符可以单个列出，也可以用”-“号给定一个区间</strong><ul>
+<li>eg：<ul>
+<li>[abc]将匹配”a”,”b”,”c”中的任意一个字符</li>
+</ul>
+</li>
+<li><em>注意：整个中括号只能匹配一个字符</em></li>
+</ul>
+</li>
+<li><strong>[^]    =&gt;    用补集来匹配不在区间范围内的字符</strong><ul>
+<li>eg：<ul>
+<li>[^5]将匹配除”5”之外的任意字符</li>
+<li><em>注意：空格与换行符也会被匹配!</em></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>[] 中的字符除了专业字符和开头的”^” 其他字符都表示文本意思， 而不是元字符</strong><ul>
+<li>eg：<ul>
+<li>[\s,.] 将匹配任何空白字符，逗号和句号*</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="逻辑符号："><a href="#逻辑符号：" class="headerlink" title="逻辑符号："></a><strong>逻辑符号：</strong></h2><ul>
+<li><strong>|    =&gt;    左右两边表达式之间“活”关系，匹配左边或者右边</strong><ul>
+<li>eg：<ul>
+<li>x|y 匹配字符’x’或者’y’</li>
+<li>ab|xy    匹配字符串ab或者xy</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>() =&gt;    1) 在被修饰匹配次数的时候，括号中的表达式可以作为整体被修饰    2) 取匹配结果的时候，括号中的表达式匹配到的内容可以被单独得到</strong><ul>
+<li>eg：    <ul>
+<li>(xy)* 匹配字符xy, xyxy, xyxyxy…</li>
+<li>(ab).*(xy) 匹配字符串ab123xy中的两个子组</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><em>注意：不要把 \</em> 放在 | 的左边， 否则会产生不可预期的结果，竖线左边的*会将右边的模式吞噬掉*<ul>
+<li>eg:<ul>
+<li>a*|b 匹配 aaabbb 会匹配到aaa与四次零宽字符</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>尽量把确定的东西放在竖线 | 的左边</strong></li>
+<li><strong>尽量使用惰性量词</strong></li>
+<li><strong>如果括号有嵌套，以左括号顺序为分组匹配顺序</strong><h2 id="高级阶段"><a href="#高级阶段" class="headerlink" title="高级阶段"></a><strong>高级阶段</strong></h2><h3 id="前向界定符（预搜索）"><a href="#前向界定符（预搜索）" class="headerlink" title="前向界定符（预搜索）"></a><strong>前向界定符（预搜索）</strong></h3></li>
+<li><strong>(?=…)    =&gt;    前向肯定界定符 如果所含正则表达式(以 … 表示)，在当前位置匹配时，后续可以继续进行匹配，否则直接失败</strong></li>
+<li>eg：<ul>
+<li>匹配后缀名是bak和exe的文件：<pre><code>.*\.(?=(bak|exe)$).*
+.*\.(bak|exe)$
+</code></pre></li>
+</ul>
+</li>
+<li><strong>(?!…)    =&gt;    前向否定界定符    如果所含正则表达式(以 … 表示)，在当前位置不匹配时，后续可以继续进行匹配，否则直接失败</strong></li>
+<li>eg：<ul>
+<li>匹配后缀名不是bak和exe的文件：<pre><code>.*\.(?!(bak|exe)$).*
+</code></pre></li>
+</ul>
+</li>
+<li><strong>(?&lt;=…)    =&gt;    后向肯定界定符</strong></li>
+<li><strong>(?&lt;!…)    =&gt;    后向否定界定符</strong><h3 id="反向索引"><a href="#反向索引" class="headerlink" title="反向索引"></a><strong>反向索引</strong></h3></li>
+<li><strong>使用 \1, \2 来引用之前已经匹配到的分组</strong></li>
+<li><strong>反向索引也可以索引界定符预匹配部分的括号分组</strong><ul>
+<li>eg：<ul>
+<li>找到5个字符组成的回文字符串<pre><code>(.)(.).\2\1
+</code></pre><h3 id="固化分组（强制贪婪）"><a href="#固化分组（强制贪婪）" class="headerlink" title="固化分组（强制贪婪）"></a><strong>固化分组（强制贪婪）</strong></h3></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>(?&gt;…)    =&gt;    强制贪婪</strong></li>
+<li><strong>如果所含正则表达式(以 … 表示)成功匹配后，回溯时不会考虑这个匹配的字符</strong><ul>
+<li>eg：<ul>
+<li>对于一个字符串“123456789”<pre><code>(\d{4,6})\d{5}            =&gt;    可以匹配
+(?&gt;\d{4,6})\d{5}        =&gt;    无法匹配
+(?&gt;\d{4,6})(?&gt;\d{3,5})        =&gt;    可以匹配
+</code></pre><h1 id="正则构造的步骤"><a href="#正则构造的步骤" class="headerlink" title="正则构造的步骤"></a><strong>正则构造的步骤</strong></h1><h3 id="1）-以需求中出现的普通字符为锚点"><a href="#1）-以需求中出现的普通字符为锚点" class="headerlink" title="1） 以需求中出现的普通字符为锚点"></a><strong>1） 以需求中出现的普通字符为锚点</strong></h3><h3 id="2）-找到匹配字符串的边界"><a href="#2）-找到匹配字符串的边界" class="headerlink" title="2） 找到匹配字符串的边界"></a><strong>2） 找到匹配字符串的边界</strong></h3><h3 id="3）-用量词填充中间部分"><a href="#3）-用量词填充中间部分" class="headerlink" title="3） 用量词填充中间部分"></a><strong>3） 用量词填充中间部分</strong></h3><h3 id="4）-验证结果"><a href="#4）-验证结果" class="headerlink" title="4） 验证结果"></a><strong>4） 验证结果</strong></h3></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+    
+
     
 </div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 DISQUS -->
+<div id="disqus-comment">
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://fanxuedong6.top/2017/11/06/Regex/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://fanxuedong6.top/2017/11/06/Regex/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+</script>
+<script type="text/ls-javascript" id="disqus-thread-script">
+    queue.offer(function() {
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document;
+                var s = d.createElement('script');
+                s.src = '//fanxuedong6# duoshuo or disqus shortname.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', + new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        });
+</script>
+
+</div>
+<style>
+    #disqus-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/09/17/C++11-Review/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     
@@ -1320,12 +1094,6 @@ It will not impact the appearance and can give developers a lot of support :)
 
 
 
-
-    <!-- Swiftye -->
-    
-
-    <!-- Local Search-->
-    
 
 
 <!-- UC Browser Compatible -->

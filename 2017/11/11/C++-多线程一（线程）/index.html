@@ -354,7 +354,7 @@
 
     
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#线程的创建"><span class="post-toc-number">1.</span> <span class="post-toc-text">线程的创建</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#线程的创建"><span class="post-toc-number">1.</span> <span class="post-toc-text">线程的创建</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#线程的基本用法"><span class="post-toc-number">2.</span> <span class="post-toc-text">线程的基本用法</span></a></li></ol>
         <!--
         <li class="mdl-menu__item">
             Some Action
@@ -531,61 +531,79 @@
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
         <h3 id="线程的创建"><a href="#线程的创建" class="headerlink" title="线程的创建"></a>线程的创建</h3><ul>
-<li>用<code>std::thread</code>来创建线程, 只需提供线程函数或者函数对象即可, 并可以同时指定线程函数的参数。</li>
-<li>还可以通过<code>std::bind</code>与 lambda 表达式来创建线程。</li>
-<li><code>std::thread</code>的拷贝构造函数为 delete 类型，因此，线程不能复制，但是可以移动，线程被移动之后将不代表任何线程。</li>
-<li><code>std::thread</code>出了作用域之后将会析构，此时如果线程函数还没执行完将会发生错误，因此，需要保证线程函数的生命周期在线程变量<code>std::thread</code>的生命周期之内。</li>
-<li>可以通过 join 方式来阻塞等待线程函数执行完毕，或者通过 detach 方式让线程在后台执行，还可以通过将线程对象保存在一个容器中以保证线程对象的生命周期。<br>```cpp<br>#include<stdlib.h></stdlib.h></li>
+<li>用<code>std::thread</code>来创建线程, 只需提供线程函数或者函数对象即可, 并可以同时指定线程函数的参数.</li>
+<li>还可以通过<code>std::bind</code>与 lambda 表达式来创建线程.</li>
+<li><code>std::thread</code>的拷贝构造函数为 delete 类型,因此,线程不能复制,但是可以移动,线程被移动之后将不代表任何线程.</li>
+<li><code>std::thread</code>出了作用域之后将会析构,此时如果线程函数还没执行完将会发生错误,因此,需要保证线程函数的生命周期在线程变量<code>std::thread</code>的生命周期之内.</li>
+<li>可以通过 join 方式来阻塞等待线程函数执行完毕,或者通过 detach 方式让线程在后台执行,还可以通过将线程对象保存在一个容器中以保证线程对象的生命周期.</li>
 </ul>
-<p>#include<iostream></iostream></p>
-<p>#include<string></string></p>
-<p>#include<vector></vector></p>
-<p>#include<memory></memory></p>
-<p>#include<thread></thread></p>
-<p>std::vector<std::thread> g_list;<br>std::vector<std::shared_ptr<std::thread>&gt; g_list_2;</std::shared_ptr<std::thread></std::thread></p>
-<p>void func(int i, double j, const std::string&amp; s)<br>{<br>    std::cout &lt;&lt; i &lt;&lt; “, “ &lt;&lt; j &lt;&lt; “, “ &lt;&lt; s &lt;&lt; std::endl;<br>}<br>void CreateThread()<br>{<br>    std::thread t(func, 1, 2, “test”);</p>
-<pre><code>g_list.push_back(std::move(t));
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;stdlib.h></span></span>
 
-g_list_2.push_back(std::make_shared&lt;std::thread&gt;(func, 1, 2, &quot;test&quot;));
-</code></pre><p>}<br>int main()<br>{<br>    CreateThread();</p>
-<pre><code>for (auto&amp; thread : g_list)
-{
-    thread.join();
-}
+<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;iostream></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;string></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;vector></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;memory></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;thread></span></span>
 
-for (auto&amp; thread : g_list_2)
-{
-    thread-&gt;join();
-}
+std<span class="token operator">::</span>vector<span class="token operator">&lt;</span>std<span class="token operator">::</span>thread<span class="token operator">></span> g_list<span class="token punctuation">;</span>
+std<span class="token operator">::</span>vector<span class="token operator">&lt;</span>std<span class="token operator">::</span>shared_ptr<span class="token operator">&lt;</span>std<span class="token operator">::</span>thread<span class="token operator">>></span> g_list_2<span class="token punctuation">;</span>
 
-return EXIT_SUCCESS;
-</code></pre><p>}</p>
-<pre><code>### 线程的基本用法
-* 线程可以获取当前线程的ID，还可以获取 CPU 核心数量
-* 可以使当前线程休眠一段时间
-```cpp
-#include&lt;stdlib.h&gt;
+<span class="token keyword">void</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token punctuation">,</span> <span class="token keyword">double</span> j<span class="token punctuation">,</span> <span class="token keyword">const</span> std<span class="token operator">::</span>string<span class="token operator">&amp;</span> s<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> i <span class="token operator">&lt;&lt;</span> <span class="token string">", "</span> <span class="token operator">&lt;&lt;</span> j <span class="token operator">&lt;&lt;</span> <span class="token string">", "</span> <span class="token operator">&lt;&lt;</span> s <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">void</span> <span class="token function">CreateThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    std<span class="token operator">::</span>thread <span class="token function">t</span><span class="token punctuation">(</span>func<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">"test"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-#include&lt;iostream&gt;
-#include&lt;thread&gt;
-#include&lt;chrono&gt;
+    g_list<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>std<span class="token operator">::</span><span class="token function">move</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-void func()
-{
-    std::this_thread::sleep_for(std::chrono::seconds(3));
-    std::cout &lt;&lt; &quot;time out&quot; &lt;&lt; std::endl;
-}
-int main()
-{
-    std::thread t(func);
+    g_list_2<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>std<span class="token operator">::</span>make_shared<span class="token operator">&lt;</span>std<span class="token operator">::</span>thread<span class="token operator">></span><span class="token punctuation">(</span>func<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">"test"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token function">CreateThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    std::cout &lt;&lt; t.get_id() &lt;&lt; std::endl;
-    std::cout &lt;&lt; std::thread::hardware_concurrency() &lt;&lt; std::endl;
-    t.join();
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">auto</span><span class="token operator">&amp;</span> thread <span class="token operator">:</span> g_list<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        thread<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    return EXIT_SUCCESS;
-}
-</code></pre>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">auto</span><span class="token operator">&amp;</span> thread <span class="token operator">:</span> g_list_2<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        thread<span class="token operator">-</span><span class="token operator">></span><span class="token function">join</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> EXIT_SUCCESS<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="线程的基本用法"><a href="#线程的基本用法" class="headerlink" title="线程的基本用法"></a>线程的基本用法</h3><ul>
+<li>线程可以获取当前线程的ID,还可以获取 CPU 核心数量</li>
+<li>可以使当前线程休眠一段时间</li>
+</ul>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;stdlib.h></span></span>
+
+<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;iostream></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;thread></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;chrono></span></span>
+
+<span class="token keyword">void</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    std<span class="token operator">::</span>this_thread<span class="token operator">::</span><span class="token function">sleep_for</span><span class="token punctuation">(</span>std<span class="token operator">::</span>chrono<span class="token operator">::</span><span class="token function">seconds</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"time out"</span> <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    std<span class="token operator">::</span>thread <span class="token function">t</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> t<span class="token punctuation">.</span><span class="token function">get_id</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>
+    std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>thread<span class="token operator">::</span><span class="token function">hardware_concurrency</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>
+    t<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> EXIT_SUCCESS<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
     
 
     

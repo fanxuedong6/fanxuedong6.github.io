@@ -12,7 +12,7 @@
     
     <title>
         
-            Tags | 
+            C++-多线程一（线程） | 
         
         风轻云淡
     </title>
@@ -40,7 +40,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="Fan Xuedong">
     <meta name="description" itemprop="description" content="来杯咖啡？">
-    <meta name="keywords" content="">
+    <meta name="keywords" content=",C++11">
 
     <!-- Site Verification -->
     
@@ -69,15 +69,18 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://fanxuedong6.top">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Tags | 风轻云淡">
+    <meta property="og:title" content="C++-多线程一（线程） | 风轻云淡">
     <meta property="og:image" content="/img/favicon.png" />
     <meta property="og:description" content="来杯咖啡？">
-    
+    <meta property="og:article:tag" content="C++11"> 
 
+    
+        <meta property="article:published_time" content="11月 11, 2017" />
+        <meta property="article:modified_time" content="11月 11, 2017" />
     
 
     <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="Tags | 风轻云淡">
+    <meta name="twitter:title" content="C++-多线程一（线程） | 风轻云淡">
     <meta name="twitter:description" content="来杯咖啡？">
     <meta name="twitter:image" content="/img/favicon.png">
     <meta name="twitter:card" content="summary_large_image" />
@@ -85,13 +88,43 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://fanxuedong6.top/tags/index.html" />
+        <link rel="canonical" href="http://fanxuedong6.top/2017/11/11/C++-多线程一（线程）/index.html" />
     
 
     <!-- Structured-data for SEO -->
     
         
 
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "风轻云淡",
+        "logo": "/img/favicon.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Fan Xuedong",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/favicon.png"
+        },
+        "description": "悟已往之不谏,知来者之可追,实迷途其未远,觉今是而昨非"
+    },
+    "headline": "C++-多线程一（线程）",
+    "url": "http://fanxuedong6.top/2017/11/11/C++-多线程一（线程）/index.html",
+    "datePublished": "11月 11, 2017",
+    "dateModified": "11月 11, 2017",
+    "description": "来杯咖啡？",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://fanxuedong6.top"
+    }
+}
+</script>
 
 
     
@@ -296,60 +329,336 @@
 
                     <!-- Post TOC -->
 
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#线程的创建"><span class="post-toc-number">1.</span> <span class="post-toc-text">线程的创建</span></a></li></ol>
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+    
+
+
+
+
 
 <!-- Layouts -->
 
-    <!-- Tags Cloud -->
-    <style>
-    #bottom{
-        position: relative;
-    }
+    <!-- Post Module -->
+    <div class="material-post_container">
 
-    @media screen and (max-width: 480px) {
-        .material-tagscloud{
-            margin: 6em 2em 0;
-        }
-    }
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
 
-    .material-tagscloud a{
-        text-decoration:none;
-        padding: 1px 9px;
-        margin: 9px 1px;
-        line-height: 40px;
-        white-space: nowrap;
-        transition: .6s;
-        opacity: .85;
-    }
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
 
-    .material-tagscloud a:hover{
-        transition: .6s;
-        opacity: 1;
-        background: #FAFAFA;
-        box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
-    }
-</style>
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
 
-<div class=" material-tagscloud">
-    <div class="material-post mdl-grid">
-        <a href="/tags/C-11/" style="font-size: 35px; color: #212121">C++11</a> <a href="/tags/Java/" style="font-size: 16px; color: #757575">Java</a> <a href="/tags/正则表达式/" style="font-size: 16px; color: #757575">正则表达式</a>
+        
+    
+            <p class="article-headline-p">
+                C++-多线程一（线程）
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
     </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Fan Xuedong</strong>
+        <span>11月 11, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="https://pan.baidu.com/share/qrcode?w=246&h=246&url=http://fanxuedong6.top/2017/11/11/C++-多线程一（线程）/">
+    
+</ul>
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/C-11/">C++11</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+        
+            <!-- Busuanzi Views -->
+            <a class="post_share-link" href="#">
+                <li class="mdl-menu__item">
+                    <span id="busuanzi_container_page_pv">
+                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
+                    </span>
+                </li>
+            </a>
+        
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=C++-多线程一（线程）&url=http://fanxuedong6.top/2017/11/11/C++-多线程一（线程）/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=C++-多线程一（线程）&url=http://fanxuedong6.top/2017/11/11/C++-多线程一（线程）/index.html&via=Fan Xuedong" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://fanxuedong6.top/2017/11/11/C++-多线程一（线程）/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://fanxuedong6.top/2017/11/11/C++-多线程一（线程）/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=风轻云淡&title=C++-多线程一（线程）&summary=来杯咖啡？&pics=http://fanxuedong6.top/img/favicon.png&url=http://fanxuedong6.top/2017/11/11/C++-多线程一（线程）/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h3 id="线程的创建"><a href="#线程的创建" class="headerlink" title="线程的创建"></a>线程的创建</h3><ul>
+<li>用<code>std::thread</code>来创建线程, 只需提供线程函数或者函数对象即可, 并可以同时指定线程函数的参数。</li>
+<li>还可以通过<code>std::bind</code>与 lambda 表达式来创建线程。</li>
+<li><code>std::thread</code>的拷贝构造函数为 delete 类型，因此，线程不能复制，但是可以移动，线程被移动之后将不代表任何线程。</li>
+<li><code>std::thread</code>出了作用域之后将会析构，此时如果线程函数还没执行完将会发生错误，因此，需要保证线程函数的生命周期在线程变量<code>std::thread</code>的生命周期之内。</li>
+<li>可以通过 join 方式来阻塞等待线程函数执行完毕，或者通过 detach 方式让线程在后台执行，还可以通过将线程对象保存在一个容器中以保证线程对象的生命周期。<br>```cpp<br>#include<stdlib.h></stdlib.h></li>
+</ul>
+<p>#include<iostream></iostream></p>
+<p>#include<string></string></p>
+<p>#include<vector></vector></p>
+<p>#include<memory></memory></p>
+<p>#include<thread></thread></p>
+<p>std::vector<std::thread> g_list;<br>std::vector<std::shared_ptr<std::thread>&gt; g_list_2;</std::shared_ptr<std::thread></std::thread></p>
+<p>void func(int i, double j, const std::string&amp; s)<br>{<br>    std::cout &lt;&lt; i &lt;&lt; “, “ &lt;&lt; j &lt;&lt; “, “ &lt;&lt; s &lt;&lt; std::endl;<br>}<br>void CreateThread()<br>{<br>    std::thread t(func, 1, 2, “test”);</p>
+<pre><code>g_list.push_back(std::move(t));
+
+g_list_2.push_back(std::make_shared&lt;std::thread&gt;(func, 1, 2, &quot;test&quot;));
+</code></pre><p>}<br>int main()<br>{<br>    CreateThread();</p>
+<pre><code>for (auto&amp; thread : g_list)
+{
+    thread.join();
+}
+
+for (auto&amp; thread : g_list_2)
+{
+    thread-&gt;join();
+}
+
+return EXIT_SUCCESS;
+</code></pre><p>}</p>
+<pre><code>### 线程的基本用法
+* 线程可以获取当前线程的ID，还可以获取 CPU 核心数量
+* 可以使当前线程休眠一段时间
+```cpp
+#include&lt;stdlib.h&gt;
+
+#include&lt;iostream&gt;
+#include&lt;thread&gt;
+#include&lt;chrono&gt;
+
+void func()
+{
+    std::this_thread::sleep_for(std::chrono::seconds(3));
+    std::cout &lt;&lt; &quot;time out&quot; &lt;&lt; std::endl;
+}
+int main()
+{
+    std::thread t(func);
+
+    std::cout &lt;&lt; t.get_id() &lt;&lt; std::endl;
+    std::cout &lt;&lt; std::thread::hardware_concurrency() &lt;&lt; std::endl;
+    t.join();
+
+    return EXIT_SUCCESS;
+}
+</code></pre>
+    
+
+    
 </div>
 
 
-<script type="text/ls-javascript" id="page-tagcloud-script">
-    var adjustFooter = function() {
-        if( ($('#bottom').offset().top + $('#bottom').outerHeight() ) < $(window).height() ) {
-            var footerBottom = $(window).height() - $('#bottom').outerHeight() - $('#bottom').offset().top;
-            $('#bottom').css('bottom', '-' + footerBottom + 'px');
-        }
-    };
+                
 
-    $(document).ready(function() {
-        adjustFooter();
-    });
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 DISQUS -->
+<div id="disqus-comment">
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://fanxuedong6.top/2017/11/11/C++-多线程一（线程）/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://fanxuedong6.top/2017/11/11/C++-多线程一（线程）/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+</script>
+<script type="text/ls-javascript" id="disqus-thread-script">
+    queue.offer(function() {
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document;
+                var s = d.createElement('script');
+                s.src = '//fanxuedong6# duoshuo or disqus shortname.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', + new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        });
 </script>
 
+</div>
+<style>
+    #disqus-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
 
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2017/11/11/C++-并发与并行的区别/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/11/06/Regex/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
 
 
 
@@ -539,6 +848,14 @@ It will not impact the appearance and can give developers a lot of support :)
 </aside>
 
                     
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
 
                     
 

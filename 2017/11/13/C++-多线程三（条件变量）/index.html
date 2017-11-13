@@ -535,37 +535,75 @@
 <ul>
 <li>拥有条件变量的线程获取互斥量</li>
 <li>循环检查某个条件，如果条件不满足，则调用wait阻塞直到条件满足；如果条件满足，则向下执行</li>
-<li>某个线程满足条件执行完之后调用notify_one或者notify_all唤醒一个或者所有等待的线程<br>使用范例：<br>```cpp<br>#include<iostream><br>#include<chrono><br>#include<thread><br>#include<mutex><br>#include<condition_variable><br>#include<string></string></condition_variable></mutex></thread></chrono></iostream></li>
+<li>某个线程满足条件执行完之后调用notify_one或者notify_all唤醒一个或者所有等待的线程</li>
+<li>使用范例：</li>
 </ul>
-<p>using namespace std;</p>
-<p>enum Situation<br>{<br>    BAD = 0,<br>    GOOD = 1,<br>};<br>enum Enough<br>{<br>    NO = 0,<br>    YES = 1,<br>};</p>
-<p>Situation situation(BAD);<br>Enough isEnough(NO);<br>mutex mtx;                            // using mutex to keep the thead run on logic<br>condition_variable_any IsGood;        // whenever u want the program to run on logic, use a condition_variable plus mutex to optimize the program </p>
-<p>void wait_until_good()<br>{<br>    lock_guard<mutex> lk_gd(mtx);<br>    while (!situation)<br>    {<br>        IsGood.wait(mtx);<br>        if (!situation)<br>            cout &lt;&lt; “no no no its not a good time to do\n” &lt;&lt; endl;<br>        else<br>            cout &lt;&lt; “ok time to do\n” &lt;&lt; endl;</mutex></p>
-<pre><code>}
-cout &lt;&lt; &quot;this thread has been ended\n&quot; &lt;&lt; endl;
-isEnough = YES;
-IsGood.notify_one();
-</code></pre><p>}</p>
-<p>int main()<br>{<br>    thread t(wait_until_good);    </p>
-<pre><code>{                                            // 此时仍然在main（）线程内
-    lock_guard&lt;mutex&gt; lk_gd(mtx);            // a good tricks working well on there is use the program-block, which is great for
-                                            // the lock_guard&lt;mutex&gt; which will be destory out of the block
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;iostream></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;chrono></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;thread></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;mutex></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;condition_variable></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;string></span></span>
 
-    situation = GOOD;
-    std::cout &lt;&lt; &quot;main()\n&quot;;
-}
-IsGood.notify_one();
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 
-{
-    lock_guard&lt;mutex&gt; lk_gd(mtx);
-    IsGood.wait(mtx, [] {return isEnough; });
-}
-std::cout &lt;&lt; &quot;Back in main()\n&quot;;
-t.join();
+<span class="token keyword">enum</span> Situation
+<span class="token punctuation">{</span>
+    BAD <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    GOOD <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">enum</span> Enough
+<span class="token punctuation">{</span>
+    NO <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>
+    YES <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-cout &lt;&lt; &quot;FINISH&quot; &lt;&lt; endl;
-return 0;
-</code></pre><p>}<br>```</p>
+Situation <span class="token function">situation</span><span class="token punctuation">(</span>BAD<span class="token punctuation">)</span><span class="token punctuation">;</span>
+Enough <span class="token function">isEnough</span><span class="token punctuation">(</span>NO<span class="token punctuation">)</span><span class="token punctuation">;</span>
+mutex mtx<span class="token punctuation">;</span>                            <span class="token comment" spellcheck="true">// using mutex to keep the thead run on logic</span>
+condition_variable_any IsGood<span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">// whenever u want the program to run on logic, use a condition_variable plus mutex to optimize the program </span>
+
+<span class="token keyword">void</span> <span class="token function">wait_until_good</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    lock_guard<span class="token operator">&lt;</span>mutex<span class="token operator">></span> <span class="token function">lk_gd</span><span class="token punctuation">(</span>mtx<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">!</span>situation<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        IsGood<span class="token punctuation">.</span><span class="token function">wait</span><span class="token punctuation">(</span>mtx<span class="token punctuation">)</span><span class="token punctuation">;</span>    
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>situation<span class="token punctuation">)</span>
+            cout <span class="token operator">&lt;&lt;</span> <span class="token string">"no no no its not a good time to do\n"</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+        <span class="token keyword">else</span>
+            cout <span class="token operator">&lt;&lt;</span> <span class="token string">"ok time to do\n"</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+    cout <span class="token operator">&lt;&lt;</span> <span class="token string">"this thread has been ended\n"</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    isEnough <span class="token operator">=</span> YES<span class="token punctuation">;</span>
+    IsGood<span class="token punctuation">.</span><span class="token function">notify_one</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    thread <span class="token function">t</span><span class="token punctuation">(</span>wait_until_good<span class="token punctuation">)</span><span class="token punctuation">;</span>    
+
+    <span class="token punctuation">{</span>                                            <span class="token comment" spellcheck="true">// 此时仍然在main（）线程内</span>
+        lock_guard<span class="token operator">&lt;</span>mutex<span class="token operator">></span> <span class="token function">lk_gd</span><span class="token punctuation">(</span>mtx<span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token comment" spellcheck="true">// a good tricks working well on there is use the program-block, which is great for</span>
+                                                <span class="token comment" spellcheck="true">// the lock_guard&lt;mutex> which will be destory out of the block</span>
+
+        situation <span class="token operator">=</span> GOOD<span class="token punctuation">;</span>
+        std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"main()\n"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    IsGood<span class="token punctuation">.</span><span class="token function">notify_one</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">{</span>
+        lock_guard<span class="token operator">&lt;</span>mutex<span class="token operator">></span> <span class="token function">lk_gd</span><span class="token punctuation">(</span>mtx<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        IsGood<span class="token punctuation">.</span><span class="token function">wait</span><span class="token punctuation">(</span>mtx<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">{</span><span class="token keyword">return</span> isEnough<span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Back in main()\n"</span><span class="token punctuation">;</span>
+    t<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    cout <span class="token operator">&lt;&lt;</span> <span class="token string">"FINISH"</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
     
 

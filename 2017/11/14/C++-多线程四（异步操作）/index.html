@@ -12,7 +12,7 @@
     
     <title>
         
-            标签: Java | 
+            C++-多线程四（异步操作） | 
         
         风轻云淡
     </title>
@@ -40,7 +40,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="Fan Xuedong">
     <meta name="description" itemprop="description" content="来杯咖啡？">
-    <meta name="keywords" content="">
+    <meta name="keywords" content=",C++11,多线程">
 
     <!-- Site Verification -->
     
@@ -69,15 +69,18 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://fanxuedong6.top">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="标签: Java | 风轻云淡">
+    <meta property="og:title" content="C++-多线程四（异步操作） | 风轻云淡">
     <meta property="og:image" content="/img/favicon.png" />
     <meta property="og:description" content="来杯咖啡？">
-    
+    <meta property="og:article:tag" content="C++11"> <meta property="og:article:tag" content="多线程"> 
 
+    
+        <meta property="article:published_time" content="11月 14, 2017" />
+        <meta property="article:modified_time" content="11月 14, 2017" />
     
 
     <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="标签: Java | 风轻云淡">
+    <meta name="twitter:title" content="C++-多线程四（异步操作） | 风轻云淡">
     <meta name="twitter:description" content="来杯咖啡？">
     <meta name="twitter:image" content="/img/favicon.png">
     <meta name="twitter:card" content="summary_large_image" />
@@ -85,13 +88,43 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://fanxuedong6.top/tags/Java/index.html" />
+        <link rel="canonical" href="http://fanxuedong6.top/2017/11/14/C++-多线程四（异步操作）/index.html" />
     
 
     <!-- Structured-data for SEO -->
     
         
 
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "风轻云淡",
+        "logo": "/img/favicon.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Fan Xuedong",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/favicon.png"
+        },
+        "description": "悟已往之不谏,知来者之可追,实迷途其未远,觉今是而昨非"
+    },
+    "headline": "C++-多线程四（异步操作）",
+    "url": "http://fanxuedong6.top/2017/11/14/C++-多线程四（异步操作）/index.html",
+    "datePublished": "11月 14, 2017",
+    "dateModified": "11月 14, 2017",
+    "description": "来杯咖啡？",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://fanxuedong6.top"
+    }
+}
+</script>
 
 
     
@@ -294,96 +327,357 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
-    
-    <div class="locate-thumbnail-symbol"></div>
+                    <!-- Post TOC -->
 
-    <!-- Pin on top -->
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#std-future"><span class="post-toc-number">1.</span> <span class="post-toc-text">std::future</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#std-promise"><span class="post-toc-number">2.</span> <span class="post-toc-text">std::promise</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#std-package-task"><span class="post-toc-number">3.</span> <span class="post-toc-text">std::package_task</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#std-async"><span class="post-toc-number">4.</span> <span class="post-toc-text">std::async</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#std-future-std-promise-std-package-task-std-async-之间的关系"><span class="post-toc-number"></span> <span class="post-toc-text">std::future , std::promise , std::package_task , std::async 之间的关系</span></a>
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
     
 
-    <!-- Normal Post -->
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         
             <!-- Random Thumbnail -->
             <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2017/06/22/Java-复习文档/">Java-复习文档</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            JAVA
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2017/06/22/Java-复习文档/" target="_self">阅读全文</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="Fan Xuedong's avatar">
-            </div>
-            <div>
-                <strong>Fan Xuedong</strong>
-                <span>6月 22, 2017</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-            <!-- Category -->
-            <span class="post_entry-category">
-                <a class="post_category-link" href="/categories/Java/">Java</a>
-            </span>
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-
-    
-
-    
-        <script type="text/ls-javascript" id="thumbnail-script">
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
     $('.post_thumbnail-random').addClass('lazy');
-
-        locatePost = locatePost.next();
-    }
 </script>
 
+        
+    
+            <p class="article-headline-p">
+                C++-多线程四（异步操作）
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Fan Xuedong</strong>
+        <span>11月 14, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="https://pan.baidu.com/share/qrcode?w=246&h=246&url=http://fanxuedong6.top/2017/11/14/C++-多线程四（异步操作）/">
+    
+</ul>
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/C-11/">C++11</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/多线程/">多线程</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+        
+            <!-- Busuanzi Views -->
+            <a class="post_share-link" href="#">
+                <li class="mdl-menu__item">
+                    <span id="busuanzi_container_page_pv">
+                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
+                    </span>
+                </li>
+            </a>
+        
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=C++-多线程四（异步操作）&url=http://fanxuedong6.top/2017/11/14/C++-多线程四（异步操作）/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=C++-多线程四（异步操作）&url=http://fanxuedong6.top/2017/11/14/C++-多线程四（异步操作）/index.html&via=Fan Xuedong" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://fanxuedong6.top/2017/11/14/C++-多线程四（异步操作）/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://fanxuedong6.top/2017/11/14/C++-多线程四（异步操作）/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=风轻云淡&title=C++-多线程四（异步操作）&summary=来杯咖啡？&pics=http://fanxuedong6.top/img/favicon.png&url=http://fanxuedong6.top/2017/11/14/C++-多线程四（异步操作）/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>关于阻塞非阻塞与异步同步的通俗解释：</p>
+<pre><code>老张爱喝茶，废话不说，煮开水。
+出场人物：老张，水壶两把（普通水壶，简称水壶；会响的水壶，简称响水壶）。
+1 老张把水壶放到火上，立等水开。（同步阻塞）
+老张觉得自己有点傻
+2 老张把水壶放到火上，去客厅看电视，时不时去厨房看看水开没有。（同步非阻塞）
+老张还是觉得自己有点傻，于是变高端了，买了把会响笛的那种水壶。水开之后，能大声发出嘀~~~~的噪音。
+3 老张把响水壶放到火上，立等水开。（异步阻塞）
+老张觉得这样傻等意义不大
+4 老张把响水壶放到火上，去客厅看电视，水壶响之前不再去看它了，响了再去拿壶。（异步非阻塞）
+老张觉得自己聪明了。
+
+
+所谓同步异步，只是对于水壶而言。
+普通水壶，同步；响水壶，异步。
+虽然都能干活，但响水壶可以在自己完工之后，提示老张水开了。这是普通水壶所不能及的。
+同步只能让调用者去轮询自己（情况2中），造成老张效率的低下。
+
+所谓阻塞非阻塞，仅仅对于老张而言。
+立等的老张，阻塞；看电视的老张，非阻塞。
+情况1和情况3中老张就是阻塞的，媳妇喊他都不知道。虽然3中响水壶是异步的，可对于立等的老张没有太大的意义。所以一般异步是配合非阻塞使用的，这样才能发挥异步的效用。
+
+——来源网络，作者不明。
+</code></pre><p>可见对于异步操作，最主要的是获取异步执行消息，C++11提供了异步操作相关的类：</p>
+<h4 id="std-future"><a href="#std-future" class="headerlink" title="std::future"></a><code>std::future</code></h4><ul>
+<li><code>std::future</code> 作伪异步结果的传输通道，可以很方便地获取线程函数的返回值；</li>
+<li>可以以<em>同步等待</em>的方式来获取结果，通过<em>轮询</em> <code>std::future_status</code> 来获取异步操作的结果；<ul>
+<li><em>defferred</em> ,异步操作未开始</li>
+<li><em>timeout</em> ,异步操作超时</li>
+<li><em>ready</em> ,异步操作已完成</li>
+</ul>
+</li>
+</ul>
+<pre class="line-numbers language-cpp"><code class="language-cpp">std<span class="token operator">::</span>future_staus status<span class="token punctuation">;</span>
+<span class="token keyword">do</span><span class="token punctuation">{</span>
+    status <span class="token operator">=</span> future<span class="token punctuation">.</span><span class="token function">wait_for</span><span class="token punctuation">(</span>std<span class="token operator">::</span>chrono<span class="token operator">::</span><span class="token function">seconds</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>status <span class="token operator">==</span> std<span class="token operator">::</span>future_status<span class="token operator">::</span>deferred<span class="token punctuation">)</span>
+        std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"deferred"</span> <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>
+    <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>status <span class="token operator">==</span> std<span class="token operator">::</span>future_status<span class="token operator">::</span>timeout<span class="token punctuation">)</span>
+        std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"time out"</span> <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>
+    <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>status <span class="token operator">==</span> std<span class="token operator">::</span>future_status<span class="token operator">::</span>ready<span class="token punctuation">)</span>
+        std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"ready"</span> <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">while</span> <span class="token punctuation">(</span>status <span class="token operator">!=</span> std<span class="token operator">::</span>future_status<span class="token operator">::</span>ready<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>获取future结果方式有三种：<ul>
+<li><em>get()</em> ,等待异步操作结束并返回结果;</li>
+<li><em>wait()</em> ,等待异步操作完成,没有返回值;</li>
+<li><em>wait_for()</em> ,超时等待返回结果;<h4 id="std-promise"><a href="#std-promise" class="headerlink" title="std::promise"></a><code>std::promise</code></h4></li>
+</ul>
+</li>
+<li><code>std::promise</code> 用来包装一个值，将数据和 <code>std::future</code> 绑定起来，方便线程赋值；</li>
+<li>在线程函数中为外面传进来的 promise 赋值，在线程函数执行完之后就可以通过 promise 的 future 来获取值了‘</li>
+</ul>
+<pre class="line-numbers language-cpp"><code class="language-cpp">std<span class="token operator">::</span>promise<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> pr<span class="token punctuation">;</span>
+std<span class="token operator">::</span>thread <span class="token function">t</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span>std<span class="token operator">::</span>promise<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> p<span class="token punctuation">)</span><span class="token punctuation">{</span> p<span class="token punctuation">.</span><span class="token function">set_value_at_thread_exit</span><span class="token punctuation">(</span><span class="token number">9</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> std<span class="token operator">::</span><span class="token function">ref</span><span class="token punctuation">(</span>pr<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+std<span class="token operator">::</span>future f <span class="token operator">=</span> pr<span class="token punctuation">.</span><span class="token function">get_future</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">auto</span> r <span class="token operator">=</span> f<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="std-package-task"><a href="#std-package-task" class="headerlink" title="std::package_task"></a><code>std::package_task</code></h4><ul>
+<li><code>std::package_task</code> 用来包装一个可调用对象，将函数与 <code>std::future</code> 绑定起来，以便异步调用；<h4 id="std-async"><a href="#std-async" class="headerlink" title="std::async"></a><code>std::async</code></h4></li>
+<li><code>std::async</code> 用来直接创建一个异步task并绑定在一个 <code>std::future</code> 上；</li>
+<li>当需要获取异步结果时，调用 <code>future.get()</code>；如果不关注结果，直接调用 <code>future.wait()</code>；</li>
+<li><code>std::async</code> 的原型是 <code>async(std::launch::async | std::launch::deferred, f, args...)</code> 参数依次为 创建线程的策略，线程函数，线程函数的参数；<ul>
+<li><code>std::launch::async</code> 在调用async时就开始创建线程</li>
+<li><code>std::launch::deferred</code> 延时加载方式创建线程。调用 async时不创建线程，直到调用了 future的 get或者 wait时才创建线程</li>
+</ul>
+</li>
+</ul>
+<pre class="line-numbers language-cpp"><code class="language-cpp">std<span class="token operator">::</span>future f1 <span class="token operator">=</span> std<span class="token operator">::</span><span class="token function">async</span><span class="token punctuation">(</span>std<span class="token operator">::</span>launch<span class="token operator">::</span>async<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token number">3</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+std<span class="token operator">:</span>cout <span class="token operator">&lt;&lt;</span> f1<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>
+
+std<span class="token operator">::</span>future f2 <span class="token operator">=</span> std<span class="token operator">::</span><span class="token function">async</span><span class="token punctuation">(</span>std<span class="token operator">::</span>launch<span class="token operator">::</span>deferred<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span> std<span class="token operator">:</span>cout <span class="token operator">&lt;&lt;</span> <span class="token number">8</span> <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+f2<span class="token punctuation">.</span><span class="token function">wait</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="std-future-std-promise-std-package-task-std-async-之间的关系"><a href="#std-future-std-promise-std-package-task-std-async-之间的关系" class="headerlink" title="std::future , std::promise , std::package_task , std::async 之间的关系"></a><code>std::future</code> , <code>std::promise</code> , <code>std::package_task</code> , <code>std::async</code> 之间的关系</h3><ul>
+<li><code>std::future</code> 提供了一个访问异步操作结果的机制，它和线程是一个级别的，属于低层次的对象，不可拷贝，只能移动，若要拷贝需要使用 <code>std::shared_future</code>；</li>
+<li><code>std::promise</code> , <code>std::package_task</code> 是高于 <code>std::future</code> 的，它们内部都有 <code>std::future</code> 以便访问异步操作结果</li>
+<li><code>std::async</code> 比 <code>std::future</code> , <code>std::promise</code> , <code>std::package_task</code> 都要高一层，可以直接创建异步task，不用关注线程创建内部细节，就能方便获取异步执行状态与结果，还可以指定创建策略；</li>
+<li>应当使用 <code>std::async</code> 代替线程创建，让它成为异步操作首选；</li>
+</ul>
+
+    
+
     
 </div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 DISQUS -->
+<div id="disqus-comment">
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://fanxuedong6.top/2017/11/14/C++-多线程四（异步操作）/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://fanxuedong6.top/2017/11/14/C++-多线程四（异步操作）/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+</script>
+<script type="text/ls-javascript" id="disqus-thread-script">
+    queue.offer(function() {
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document;
+                var s = d.createElement('script');
+                s.src = '//fanxuedong6# duoshuo or disqus shortname.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', + new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        });
+</script>
+
+</div>
+<style>
+    #disqus-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/11/13/C++-多线程三（条件变量）/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     
@@ -572,6 +866,14 @@ It will not impact the appearance and can give developers a lot of support :)
 </aside>
 
                     
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
 
                     
 

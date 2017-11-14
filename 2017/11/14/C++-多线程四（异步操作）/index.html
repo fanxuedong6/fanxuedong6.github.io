@@ -354,7 +354,7 @@
 
     
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#std-future"><span class="post-toc-number">1.</span> <span class="post-toc-text">std::future</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#std-promise"><span class="post-toc-number">2.</span> <span class="post-toc-text">std::promise</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#std-package-task"><span class="post-toc-number">3.</span> <span class="post-toc-text">std::package_task</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#std-async"><span class="post-toc-number">4.</span> <span class="post-toc-text">std::async</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#std-future-std-promise-std-package-task-std-async-之间的关系"><span class="post-toc-number"></span> <span class="post-toc-text">std::future , std::promise , std::package_task , std::async 之间的关系</span></a>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#std-future"><span class="post-toc-number">1.</span> <span class="post-toc-text">std::future</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#std-promise"><span class="post-toc-number">2.</span> <span class="post-toc-text">std::promise</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#std-package-task"><span class="post-toc-number">3.</span> <span class="post-toc-text">std::package_task</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#std-async"><span class="post-toc-number">4.</span> <span class="post-toc-text">std::async</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#std-future-std-promise-std-package-task-std-async-之间的关系"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">std::future , std::promise , std::package_task , std::async 之间的关系</span></a></li></ol></li></ol>
         <!--
         <li class="mdl-menu__item">
             Some Action
@@ -554,7 +554,7 @@
 
 ——来源网络，作者不明。
 </code></pre><p>可见对于异步操作，最主要的是获取异步执行消息，C++11提供了异步操作相关的类：</p>
-<h4 id="std-future"><a href="#std-future" class="headerlink" title="std::future"></a><code>std::future</code></h4><ul>
+<h3 id="std-future"><a href="#std-future" class="headerlink" title="std::future"></a><code>std::future</code></h3><ul>
 <li><code>std::future</code> 作伪异步结果的传输通道，可以很方便地获取线程函数的返回值；</li>
 <li>可以以<em>同步等待</em>的方式来获取结果，通过<em>轮询</em> <code>std::future_status</code> 来获取异步操作的结果；<ul>
 <li><em>defferred</em> ,异步操作未开始</li>
@@ -578,9 +578,11 @@
 <li>获取future结果方式有三种：<ul>
 <li><em>get()</em> ,等待异步操作结束并返回结果;</li>
 <li><em>wait()</em> ,等待异步操作完成,没有返回值;</li>
-<li><em>wait_for()</em> ,超时等待返回结果;<h4 id="std-promise"><a href="#std-promise" class="headerlink" title="std::promise"></a><code>std::promise</code></h4></li>
+<li><em>wait_for()</em> ,超时等待返回结果;</li>
 </ul>
 </li>
+</ul>
+<h3 id="std-promise"><a href="#std-promise" class="headerlink" title="std::promise"></a><code>std::promise</code></h3><ul>
 <li><code>std::promise</code> 用来包装一个值，将数据和 <code>std::future</code> 绑定起来，方便线程赋值；</li>
 <li>在线程函数中为外面传进来的 promise 赋值，在线程函数执行完之后就可以通过 promise 的 future 来获取值了‘</li>
 </ul>
@@ -589,8 +591,10 @@ std<span class="token operator">::</span>thread <span class="token function">t</
 std<span class="token operator">::</span>future f <span class="token operator">=</span> pr<span class="token punctuation">.</span><span class="token function">get_future</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">auto</span> r <span class="token operator">=</span> f<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="std-package-task"><a href="#std-package-task" class="headerlink" title="std::package_task"></a><code>std::package_task</code></h4><ul>
-<li><code>std::package_task</code> 用来包装一个可调用对象，将函数与 <code>std::future</code> 绑定起来，以便异步调用；<h4 id="std-async"><a href="#std-async" class="headerlink" title="std::async"></a><code>std::async</code></h4></li>
+<h3 id="std-package-task"><a href="#std-package-task" class="headerlink" title="std::package_task"></a><code>std::package_task</code></h3><ul>
+<li><code>std::package_task</code> 用来包装一个可调用对象，将函数与 <code>std::future</code> 绑定起来，以便异步调用；</li>
+</ul>
+<h3 id="std-async"><a href="#std-async" class="headerlink" title="std::async"></a><code>std::async</code></h3><ul>
 <li><code>std::async</code> 用来直接创建一个异步task并绑定在一个 <code>std::future</code> 上；</li>
 <li>当需要获取异步结果时，调用 <code>future.get()</code>；如果不关注结果，直接调用 <code>future.wait()</code>；</li>
 <li><code>std::async</code> 的原型是 <code>async(std::launch::async | std::launch::deferred, f, args...)</code> 参数依次为 创建线程的策略，线程函数，线程函数的参数；<ul>
@@ -605,7 +609,7 @@ std<span class="token operator">:</span>cout <span class="token operator">&lt;&l
 std<span class="token operator">::</span>future f2 <span class="token operator">=</span> std<span class="token operator">::</span><span class="token function">async</span><span class="token punctuation">(</span>std<span class="token operator">::</span>launch<span class="token operator">::</span>deferred<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span> std<span class="token operator">:</span>cout <span class="token operator">&lt;&lt;</span> <span class="token number">8</span> <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 f2<span class="token punctuation">.</span><span class="token function">wait</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="std-future-std-promise-std-package-task-std-async-之间的关系"><a href="#std-future-std-promise-std-package-task-std-async-之间的关系" class="headerlink" title="std::future , std::promise , std::package_task , std::async 之间的关系"></a><code>std::future</code> , <code>std::promise</code> , <code>std::package_task</code> , <code>std::async</code> 之间的关系</h3><ul>
+<h4 id="std-future-std-promise-std-package-task-std-async-之间的关系"><a href="#std-future-std-promise-std-package-task-std-async-之间的关系" class="headerlink" title="std::future , std::promise , std::package_task , std::async 之间的关系"></a><code>std::future</code> , <code>std::promise</code> , <code>std::package_task</code> , <code>std::async</code> 之间的关系</h4><ul>
 <li><code>std::future</code> 提供了一个访问异步操作结果的机制，它和线程是一个级别的，属于低层次的对象，不可拷贝，只能移动，若要拷贝需要使用 <code>std::shared_future</code>；</li>
 <li><code>std::promise</code> , <code>std::package_task</code> 是高于 <code>std::future</code> 的，它们内部都有 <code>std::future</code> 以便访问异步操作结果</li>
 <li><code>std::async</code> 比 <code>std::future</code> , <code>std::promise</code> , <code>std::package_task</code> 都要高一层，可以直接创建异步task，不用关注线程创建内部细节，就能方便获取异步执行状态与结果，还可以指定创建策略；</li>

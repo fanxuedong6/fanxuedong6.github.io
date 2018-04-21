@@ -12,7 +12,7 @@
     
     <title>
         
-            Tags | 
+            C++-深度探索对象模型 | 
         
         风轻云淡
     </title>
@@ -40,7 +40,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="Fan Xuedong">
     <meta name="description" itemprop="description" content="来杯咖啡？">
-    <meta name="keywords" content="">
+    <meta name="keywords" content=",C++对象模型">
 
     <!-- Site Verification -->
     
@@ -69,15 +69,18 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://fanxuedong6.top">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Tags | 风轻云淡">
+    <meta property="og:title" content="C++-深度探索对象模型 | 风轻云淡">
     <meta property="og:image" content="/img/favicon.png" />
     <meta property="og:description" content="来杯咖啡？">
-    
+    <meta property="og:article:tag" content="C++对象模型"> 
 
+    
+        <meta property="article:published_time" content="4月 21, 2018" />
+        <meta property="article:modified_time" content="4月 22, 2018" />
     
 
     <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="Tags | 风轻云淡">
+    <meta name="twitter:title" content="C++-深度探索对象模型 | 风轻云淡">
     <meta name="twitter:description" content="来杯咖啡？">
     <meta name="twitter:image" content="/img/favicon.png">
     <meta name="twitter:card" content="summary_large_image" />
@@ -85,13 +88,43 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://fanxuedong6.top/tags/index.html" />
+        <link rel="canonical" href="http://fanxuedong6.top/2018/04/21/C++-深度探索对象模型/index.html" />
     
 
     <!-- Structured-data for SEO -->
     
         
 
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "风轻云淡",
+        "logo": "/img/favicon.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Fan Xuedong",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/favicon.png"
+        },
+        "description": "悟已往之不谏,知来者之可追,实迷途其未远,觉今是而昨非"
+    },
+    "headline": "C++-深度探索对象模型",
+    "url": "http://fanxuedong6.top/2018/04/21/C++-深度探索对象模型/index.html",
+    "datePublished": "4月 21, 2018",
+    "dateModified": "4月 22, 2018",
+    "description": "来杯咖啡？",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://fanxuedong6.top"
+    }
+}
+</script>
 
 
     
@@ -296,60 +329,306 @@
 
                     <!-- Post TOC -->
 
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+    <!-- Left aligned menu below button -->
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#C-对象模型"><span class="post-toc-number">1.</span> <span class="post-toc-text">C++对象模型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#探究重点-：-各种底层实现机制，了解Object的内存布局"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">探究重点 ： 各种底层实现机制，了解Object的内存布局</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#前提：-C-的模型定义是由编译器customized的"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">前提： C++的模型定义是由编译器customized的</span></a></li></ol></li></ol>
+        <!--
+        <li class="mdl-menu__item">
+            Some Action
+        </li>
+        -->
+    </ul>
+    
+
+
+
+
 
 <!-- Layouts -->
 
-    <!-- Tags Cloud -->
-    <style>
-    #bottom{
-        position: relative;
-    }
+    <!-- Post Module -->
+    <div class="material-post_container">
 
-    @media screen and (max-width: 480px) {
-        .material-tagscloud{
-            margin: 6em 2em 0;
-        }
-    }
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
 
-    .material-tagscloud a{
-        text-decoration:none;
-        padding: 1px 9px;
-        margin: 9px 1px;
-        line-height: 40px;
-        white-space: nowrap;
-        transition: .6s;
-        opacity: .85;
-    }
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
 
-    .material-tagscloud a:hover{
-        transition: .6s;
-        opacity: 1;
-        background: #FAFAFA;
-        box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
-    }
-</style>
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
 
-<div class=" material-tagscloud">
-    <div class="material-post mdl-grid">
-        <a href="/tags/C-11/" style="font-size: 35px; color: #212121">C++11</a> <a href="/tags/C-对象模型/" style="font-size: 16px; color: #757575">C++对象模型</a> <a href="/tags/Java/" style="font-size: 16px; color: #757575">Java</a> <a href="/tags/多线程/" style="font-size: 25.5px; color: #4b4b4b">多线程</a> <a href="/tags/正则表达式/" style="font-size: 16px; color: #757575">正则表达式</a>
+        
+    
+            <p class="article-headline-p">
+                C++-深度探索对象模型
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
     </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Fan Xuedong</strong>
+        <span>4月 21, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="https://pan.baidu.com/share/qrcode?w=246&h=246&url=http://fanxuedong6.top/2018/04/21/C++-深度探索对象模型/">
+    
+</ul>
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/C-对象模型/">C++对象模型</a>
+    </ul>
+    
+
+    <!-- Share -->
+    <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+        
+            <!-- Busuanzi Views -->
+            <a class="post_share-link" href="#">
+                <li class="mdl-menu__item">
+                    <span id="busuanzi_container_page_pv">
+                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
+                    </span>
+                </li>
+            </a>
+        
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=C++-深度探索对象模型&url=http://fanxuedong6.top/2018/04/21/C++-深度探索对象模型/index.html&pic=&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=C++-深度探索对象模型&url=http://fanxuedong6.top/2018/04/21/C++-深度探索对象模型/index.html&via=Fan Xuedong" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://fanxuedong6.top/2018/04/21/C++-深度探索对象模型/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://fanxuedong6.top/2018/04/21/C++-深度探索对象模型/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=风轻云淡&title=C++-深度探索对象模型&summary=来杯咖啡？&pics=http://fanxuedong6.top/img/favicon.png&url=http://fanxuedong6.top/2018/04/21/C++-深度探索对象模型/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h3 id="C-对象模型"><a href="#C-对象模型" class="headerlink" title="C++对象模型"></a>C++对象模型</h3><h4 id="探究重点-：-各种底层实现机制，了解Object的内存布局"><a href="#探究重点-：-各种底层实现机制，了解Object的内存布局" class="headerlink" title="探究重点 ： 各种底层实现机制，了解Object的内存布局"></a><strong>探究重点 ： 各种底层实现机制，了解Object的内存布局</strong></h4><h4 id="前提：-C-的模型定义是由编译器customized的"><a href="#前提：-C-的模型定义是由编译器customized的" class="headerlink" title="前提： C++的模型定义是由编译器customized的"></a><strong>前提： C++的模型定义是由编译器customized的</strong></h4><ul>
+<li><strong>不变量</strong><ul>
+<li>完整的virtual functions <strong>在编译期就固定下来了</strong> ，无法进行动态增加或取代其中任何一个</li>
+<li>虚函数得以快速进行dispatch的成本是执行器的弹性</li>
+<li>目前所有编译器对virtual function的实现均为大小固定，且编译期就已经定好的virtual table</li>
+</ul>
+</li>
+<li><strong>相对于 C , C++ 用类封装一个对象后， 布局的成本增加了多少呢？</strong><ul>
+<li>虽然 Member functions出现在 class 的声明之中， 但是却不出现在 object 之内</li>
+<li>每个 non-inline member function 只诞生一个函数实例</li>
+<li>每个 inline function 会在每个模块上产生一个实例</li>
+<li>C++ 的布局与存取时间上的负担主要是由于 virtual 引起的,  包括 virtual function 机制与 virtual base class</li>
+</ul>
+</li>
+<li><strong>目前通用的C++类模型？</strong><ul>
+<li>普通数据与方法成员    Nonstatic data members and function members 配置于每一个class object中</li>
+<li>静态数据与方法成员 Static data members and function members 存放在个别的class object 之外</li>
+<li>虚函数 Virtual function 每个class产生一堆指向 virtual function 的指针并存放在一个 virtual table 中 每个 object 被安置一个指针指向相关的 virtual table 通常为 vptr 而 vptr 的设定与重置实在构造、析构与拷贝中自动完成的 每个 class 所关联的 type_info object 也被 vtable 指出并放在第一个slot中</li>
+<li>继承 子类继承父类后 子类的虚函数也会被放在 vtable 中<br><img src="/2018/04/21/C++-深度探索对象模型/class model.png" alt=""></li>
+</ul>
+</li>
+<li><strong>对象转化？</strong><ul>
+<li>指针类型的意义是教导编译器如何解释特定地址中的内存大小</li>
+<li><em>cast</em> 是编译器指令，<strong>不改变指针真正地址</strong>， 只影响“如何解释”</li>
+</ul>
+</li>
+<li><strong>需要多少内存才能表现一个class object?</strong><ul>
+<li>其 nonstatic data members 的总和大小</li>
+<li>加上任何由于内存对齐(alignment)问题而填补(padding)的空间</li>
+<li>加上为了支持 virtual 而内部产生的任何额外负担<br><img src="/2018/04/21/C++-深度探索对象模型/class size.png" alt=""> </li>
+</ul>
+</li>
+</ul>
+
+    
+
+    
 </div>
 
 
-<script type="text/ls-javascript" id="page-tagcloud-script">
-    var adjustFooter = function() {
-        if( ($('#bottom').offset().top + $('#bottom').outerHeight() ) < $(window).height() ) {
-            var footerBottom = $(window).height() - $('#bottom').outerHeight() - $('#bottom').offset().top;
-            $('#bottom').css('bottom', '-' + footerBottom + 'px');
-        }
-    };
+                
 
-    $(document).ready(function() {
-        adjustFooter();
-    });
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 DISQUS -->
+<div id="disqus-comment">
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://fanxuedong6.top/2018/04/21/C++-深度探索对象模型/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://fanxuedong6.top/2018/04/21/C++-深度探索对象模型/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+</script>
+<script type="text/ls-javascript" id="disqus-thread-script">
+    queue.offer(function() {
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document;
+                var s = d.createElement('script');
+                s.src = '//fanxuedong6# duoshuo or disqus shortname.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', + new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        });
 </script>
 
+</div>
+<style>
+    #disqus-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
 
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/11/14/C++-多线程四（异步操作）/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
 
 
 
@@ -539,6 +818,14 @@ It will not impact the appearance and can give developers a lot of support :)
 </aside>
 
                     
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
 
                     
 
